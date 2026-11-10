@@ -1,32 +1,53 @@
-
-
-
 import telebot
 from gigachat import GigaChat
 
-# ТВОИ КЛЮЧИ (я вставил те, что были на скрине, но проверь!)
+# ТВОИ КЛЮЧИ
 TELEGRAM_TOKEN = "9087513004:AAHDykShzFdWCZ7VBLhjfYQ1NGGjihGVfNU"
-GIGACHAT_KEY = "MDFhMWMwZDgtYTQxOC03NGQyLWFjZWUtMDc4ZDdiNTQ2NzNlOmVhNmE5Y2RjLWEwNWQtNDQ5Ni04YWMxLTlhNDFjNmMzMTFmZg=="
+GIGACHAT_KEY = "MDFhMWMwZDgtYTQxOC03NGQyLWFjZWUtMDc4ZDdiNTQ2NzNlOmUwNjc0MzUwLWUyMTgtNDAyYy1hODY1LWJjNjVkMDliOGRkZg=="
 
-# Подключение к GigaChat с указанием модели
 giga = GigaChat(credentials=GIGACHAT_KEY, model="GigaChat-2", verify_ssl_certs=False)
-
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, "Привет! Я твой умный ИИ-помощник. Напиши мне любой вопрос, и я отвечу! 😎")
+    text = (
+        "Здарова, братан! Я твой умный ИИ-помощник. 🤖\n\n"
+        "⚠️ *Важно:* Я работаю на бесплатном сервере, поэтому если ты долго не писал, я могу 'уснуть'. "
+        "Мне нужно будет около 50 секунд, чтобы проснуться и ответить. Просто подожди, я никуда не денусь!\n\n"
+        "Спрашивай что угодно! 😎"
+    )
+    bot.send_message(message.chat.id, text, parse_mode="Markdown")
+
+@bot.message_handler(commands=['help', 'owner'])
+def help_message(message):
+    # ТУТ МОЖЕШЬ ВСТАВИТЬ СВОЮ ССЫЛКУ НА АНОНИМНОГО БОТА ВМЕСТО t.me/anonaskbot?start=uxn1vsg
+    text = (
+        "👨‍💻 *Связь с владельцем:*\n\n"
+        "Если у тебя есть идеи, нашел баг или хочешь что-то предложить, "
+        "пиши сюда 👉 t.me/anonaskbot?start=uxn1vsg\n\n"
+        "*(Замени эту ссылку на своего анонимного бота в коде)*"
+    )
+    bot.send_message(message.chat.id, text, parse_mode="Markdown")
 
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     bot.send_chat_action(message.chat.id, 'typing')
     try:
-        # Отправляем запрос в нейросеть
-        response = giga.chat(message.text)
+        messages = [
+            {
+                "role": "system", 
+                "content": "Ты обычный пацан-помощник. Отвечай простым русским языком. Если тебя просят решить математический пример, пиши сразу только итоговый ответ цифрами (например: 150). НИКОГДА не пиши слова times, multiplied by, формулы, знаки $ и обратные слэши."
+            },
+            {
+                "role": "user", 
+                "content": message.text
+            }
+        ]
+        
+        response = giga.chat({"messages": messages})
         answer = response.choices[0].message.content
         
-        # Убираем доллары и слэши из ответа (чтобы не было формул)
-        answer = answer.replace("$", "").replace("\\", "")
+        answer = answer.replace("$", "").replace("\\", "").replace("times", "*")
         
         bot.reply_to(message, answer)
     except Exception as e:
