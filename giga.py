@@ -25,7 +25,7 @@ def help_message(message):
         "👨‍💻 *Связь с владельцем:*\n\n"
         "Если у тебя есть идеи, нашел баг или хочешь что-то предложить, "
         "пиши сюда 👉 t.me/anonaskbot?start=uxn1vsg\n\n"
-        "*(Замени эту ссылку на своего анонимного бота в коде)*"
+        
     )
     bot.send_message(message.chat.id, text, parse_mode="Markdown")
 
