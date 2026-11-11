@@ -13,9 +13,7 @@ def start_message(message):
     text = (
         "Здарова, братан! Я твой умный ИИ-помощник. 🤖\n\n"
         "Спрашивай меня о чем угодно: помогу с домашкой, объясню сложное простыми словами или просто поболтаем. 😎\n\n"
-        "👨‍💻 *Связь с владельцем:* https://t.me/anonaskbot?start=uxnlvsg"
-    )
-    bot.send_message(message.chat.id, text, parse_mode="Markdown")
+        "👨‍💻 *Связь с владельцем:*/owner"
     )
     bot.send_message(message.chat.id, text, parse_mode="Markdown")
 
