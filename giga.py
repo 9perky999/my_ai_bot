@@ -2,7 +2,7 @@ import telebot
 from gigachat import GigaChat
 
 # ТВОИ КЛЮЧИ
-TELEGRAM_TOKEN = "9087513004:AAHDykShzFdWCZ7VBLhjfYQ1NGGjihGVfNU"
+TELEGRAM_TOKEN= "9087513004:AAEfw35GqnNCFrTL5kljrOiPjnVWYs62Moc"
 GIGACHAT_KEY = "MDFhMWMwZDgtYTQxOC03NGQyLWFjZWUtMDc4ZDdiNTQ2NzNlOjZiMmM2NjcxLWI3MzQtNGYzOC1hZWIzLTBiYjdjZTQxOWE3Nw=="
 
 giga = GigaChat(credentials=GIGACHAT_KEY, model="GigaChat-2", verify_ssl_certs=False)
