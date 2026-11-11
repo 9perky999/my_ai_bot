@@ -12,9 +12,10 @@ bot = telebot.TeleBot(TELEGRAM_TOKEN)
 def start_message(message):
     text = (
         "Здарова, братан! Я твой умный ИИ-помощник. 🤖\n\n"
-        "⚠️ *Важно:* Я работаю на бесплатном сервере, поэтому если ты долго не писал, я могу 'уснуть'. "
-        "Мне нужно будет около 50 секунд, чтобы проснуться и ответить. Просто подожди, я никуда не денусь!\n\n"
-        "Спрашивай что угодно! 😎"
+        "Спрашивай меня о чем угодно: помогу с домашкой, объясню сложное простыми словами или просто поболтаем. 😎\n\n"
+        "👨‍💻 *Связь с владельцем:* https://t.me/anonaskbot?start=uxnlvsg"
+    )
+    bot.send_message(message.chat.id, text, parse_mode="Markdown")
     )
     bot.send_message(message.chat.id, text, parse_mode="Markdown")
 
