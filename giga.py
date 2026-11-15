@@ -2,7 +2,7 @@ import telebot
 from gigachat import GigaChat
 
 # ТВОИ КЛЮЧИ (ВСТАВЬ СВОИ ЗНАЧЕНИЯ!)
-TELEGRAM_TOKEN = "9087513004:AAHefmsEBmTKlOGB0sFjdO2txb67-whEf7Q" 
+TELEGRAM_TOKEN = os.getenv("BOT_TOKEN")
 GIGACHAT_KEY = "MDFhMWMwZDgtYTQxOC03NGQyLWFjZWUtMDc4ZDdiNTQ2NzNlOjk5OGFmZWU3LTQyZGMtNDI0OC1hMzgyLTY2ZTI5Mzc2NWQ1Ng=="
 
 # Подключение к нейросети GigaChat
