@@ -1,6 +1,6 @@
 import telebot
 from gigachat import GigaChat
-
+import os
 # ТВОИ КЛЮЧИ (ВСТАВЬ СВОИ ЗНАЧЕНИЯ!)
 TELEGRAM_TOKEN = os.getenv("BOT_TOKEN")
 GIGACHAT_KEY = "MDFhMWMwZDgtYTQxOC03NGQyLWFjZWUtMDc4ZDdiNTQ2NzNlOjk5OGFmZWU3LTQyZGMtNDI0OC1hMzgyLTY2ZTI5Mzc2NWQ1Ng=="
